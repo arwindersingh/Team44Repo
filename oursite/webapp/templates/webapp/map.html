@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>my visualized data</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+  <!-- <p> This is my visualized data</p> -->
+  <script type="text/javascript">
+  data_from_django={{ my_data }};
+  widget.init(data_from_django);
+
+    // var  canvas = d3.select("body").append("svg")
+    //                   .attr("width", 500)
+    //                   .attr("height", 500) 
+    // data = []   
+    // d3.json("liveMelbourneTweets.json", function(data){
+    //   var group = canvas.selectAll("g")
+    //   .data(data.features)
+    //   .enter()
+    //   .append("g")
+    //   var projection = d3.geo.mercater().scale(7300).translate([0,1980]);
+    //   var path = d3.geo.path().projection(projection);
+    //   var areas = group.append("path")
+    //   .attr("d", path)
+    //   .attr("class", "area")
+    //   .attr("fill", "steelblue");
+
+    //   group.append("text")
+    //   .attr("x", function(d){return path.centroid(d)[0];})
+    //   .attr("y", function(d){return path.centroid(d)[1];})
+    //   .text(function(d) {return d.properties.LNNAMN;})
+    // });
+    // console.log(d3);
+  </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}	
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team 44</title>
+
+	<!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/> -->
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+	<link rel="stylesheet" type="{% static 'text/css" href="css/normalize.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/set1.css' %}" />
+	<link href="{% static 'css/overwrite.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><span>Tweets Analysis</span></a>
+			</div>
+			<div class="navbar-collapse collapse">							
+				<div class="menu">
+							<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation"><a href="/">Home</a></li>
+						<li role="presentation"><a href="/cancer/">Scenario</a></li>
+						<li role="presentation"><a href="/tweet/">Collected Tweets</a></li>
+						<li role="presentation"><a href="/visualization/">Comparison & Analysis</a></li>
+						<li role="presentation"><a href="/aboutus/">Aboutus</a></li>							
+					</ul>
+				</div>
+			</div>			
+		</div>
+	</nav>
+	
+  <body>
+	<div class="container">
+		<div class="row">
+			<div class="service">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="text-center">
+						<h2>AURIN Data</h2>
+						<p>We collect health data from Aurin and planned to compare it with the tweets we stored.
+						</br>Below we just represent three topics which we are going to analyze. They are 'Percent of people reporting heart disease','Cancer incidence per 1000 population (2014)' and 'Percentage of people reporting being obese (2014)'.
+						</p>
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+			<!-- =============== google map  2nd try start  ================ -->
+
+<!--   <head>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          ['Melbourne', 200],
+          ['Tasmania', 300],
+          // ['Brazil', 400],
+          // ['Canada', 500],
+          // ['France', 600],
+          // ['RU', 700]
+        ]);
+
+        var options = {
+	       	region: 'AU',
+     		displayMode: 'markers',
+     		colorAxis: {colors: ['green', 'blue']}
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    };
+    </script>
+  </head>
+  <body>
+    <div id="chart_div"  align="center" valign="center" style="width: 1300px; height: 500px;"></div>
+  </body> -->
+
+	<!-- =============== google map  2nd try end  ================ -->
+
+	
+   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Local Government Area', 'Percent of people reporting heart disease'],
+          ['Casey', 10100],
+          ['Whittlesea', 9800],
+          ['Yarriambiack', 9600],
+          ['Corangamite', 9500],
+          ['Wodonga', 9200],
+          ['Greater Dandenong', 9100],
+          ['East Gippsland', 9000],
+          ['North Grampians', 8900],
+          ['Hepburn', 8800],
+          ['Moira', 8800],
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Top 10 locations people reporting heart disease',
+			// vAxis: { 
+			//     viewWindow: {
+			//         min:0
+			//     }
+            // subtitle: 'Number of Tweets collected at each city',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="columnchart_material" style="width: 1400px; height: 500px;"></div>
+  </body>
+
+<!-- ============== -->
+
+   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Local Government Area', 'Cancer incidence per 1000 population (2014)'],
+          ['Bulok', 11.5],
+          ['Strathbogie', 10.2],
+          ['Gannawarra', 10.2],
+	      ['North Grampians', 9.6],
+          ['Central Goldfield', 8.3],
+          ['East Gippsland', 8.2],
+          ['Towong', 7.9],
+          ['South Grampians', 7.8],
+          ['Hindmarsh', 7.8],
+          ['Mornington Peninsula', 7.7],
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Top 10 Cancer incidence per 1000 population (2014)',
+
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('1columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="1columnchart_material" style="width: 1400px; height: 500px;"></div>
+  </body>
+
+<!-- ===================== -->
+
+   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Local Government Area', 'Percentage of people reporting being obese (2014)'],
+          ['Campaspe (S)', 32.3],
+          ['Moira (S)', 31.7],
+          ['Pyrenees (S)', 30.1],
+	      ['Mitchell (S)', 28.8],
+          ['Glenelg (S)', 28.6],
+          ['Swan Hill (RS)', 27.9],
+          ['Moorabool (S)', 27.9],
+          ['Indigo (S)', 27.7],
+          ['Corangamite', 27.5],
+          ['Melton', 27.2],
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Percentage of people reporting being obese (2014) (2014)',
+
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('2columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="2columnchart_material" style="width: 1400px; height: 500px;"></div>
+  </body>
+
+
+<!-- ================= -->
+	<footer>
+		<div class="inner-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 f-about">
+						<a href="index.html"><h1><span>Acknowledgement</span></h1></a>
+						<p>Appreciate for the helpful questions and answers posted in Unimelb LMS discussion board.
+						</p>
+						<p> Thanks for Australian Urban Research Infrastructure Network (AURIN) providing data source.
+					</div>
+					<div class="col-md-4 l-posts">
+						<h3 class="widgetheading">Sitemap</h3>
+						<ul>
+							<li><a href="/cancer/">Related Health Data from Aurin</a></li>
+							<li><a href="/tweet/">See what we got from Twitter</a></li>
+							<li><a href="/visualization/">Interesting things we found</a></li>
+							<li><a href="/aboutus/">Know more about our team</a></li>
+						</ul>
+					</div>
+					<div class="col-md-4 f-contact">
+						<h3 class="widgetheading">Contact</h3>
+						<a href="#"><p><i class="fa fa-envelope"></i> team44@gmail.com</p></a>
+						<!-- <p><i class="fa fa-phone"></i>  +345 578 59 45 416</p> -->
+						<p><i class="fa fa-home"></i> University of Melbourne, 
+							Victoria AU</p>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+		<div class="last-div">
+			<div class="container">
+				<div class="row">
+					<div class="copyright">
+						© Cloud Computing Group 44
+					</div>	
+                    <!-- 
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=eNno
+                    -->				
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<ul class="social-network">
+						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a></li>
+						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a></li>
+						<!-- <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin fa-1x"></i></a></li> -->
+						<!-- <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest fa-1x"></i></a></li> -->
+						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus fa-1x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>	
+				
+			
+		</div>	
+	</footer>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.isotope.min.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="js/fliplightbox.min.js"></script>
+	<script src="js/functions.js"></script>	
+	<script type="text/javascript">$('.portfolio').flipLightBox()</script>
+  </body>
+</html>

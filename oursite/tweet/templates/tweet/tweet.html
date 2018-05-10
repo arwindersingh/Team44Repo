@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}	
+	<style type="text/css">
+		#map {
+			height: 100%;
+		}
+		html, body {
+			height: 100%;
+		}
+	</style>
+
+
+	columnchart_material
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team 44</title>
+
+	<!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/> -->
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+	<link rel="stylesheet" type="{% static 'text/css" href="css/normalize.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/set1.css' %}" />
+	<link href="{% static 'css/overwrite.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><span>Tweets Analysis</span></a>
+			</div>
+			<div class="navbar-collapse collapse">							
+				<div class="menu">
+							<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation"><a href="/">Home</a></li>
+						<li role="presentation"><a href="/cancer/">Scenario</a></li>
+						<li role="presentation"><a href="/tweet/">Collected Tweets</a></li>
+						<li role="presentation"><a href="/visualization/">Comparison & Analysis</a></li>
+						<li role="presentation"><a href="/aboutus/">Aboutus</a></li>						
+					</ul>
+				</div>
+			</div>			
+		</div>
+	</nav>
+	
+  <body>
+	<div class="container">
+		<div class="row">
+			<div class="service">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="text-center">
+						<h2>See what we got from twitter</h2>
+						<p>Here, tweets data is collected by Twitter API and make sentiment anaylysis to classfy them into positive, negative and neutral.
+						</br>Sentiment Analysis: In our project, we applied the VADER ((Valence Aware Dictionary and Sentiment Reasoner) tool in nltk library to achieve the sentiment analysis function. VaderSentiment is a fully open sourced lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. The time complexity of the algorithm is O(N). The VADER sentiment lexicon is sensitive both the polarity and the intensity of sentiments expressed in social media contexts, and is also generally applicable to sentiment analysis in other domains. 
+						</p>
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- =============== google map 1st try ================ -->
+
+<!-- 
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script>
+    google.charts.load('current', { 'packages': ['map'] });
+    google.charts.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Population'],
+        // ['China', 'China: 1,363,800,000'],
+        // ['India', 'India: 1,242,620,000'],
+        // ['US', 'US: 317,842,000'],
+        // ['Indonesia', 'Indonesia: 247,424,598'],
+        // ['Brazil', 'Brazil: 201,032,714'],
+        // ['Pakistan', 'Pakistan: 186,134,000'],
+        // ['Nigeria', 'Nigeria: 173,615,000'],
+        // ['Bangladesh', 'Bangladesh: 152,518,015'],
+        // ['Russia', 'Russia: 146,019,512'],
+        ['AU', 'AU: 127,120,000']
+      ]);
+
+    var options = {
+      showTooltip: true,
+      showInfoWindow: true
+    };
+
+    var map = new google.visualization.Map(document.getElementById('chart_div'));
+
+    map.draw(data, options);
+  };
+  </script>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+  </body> -->
+	<!-- =============== google map  1st try end  ================ -->
+
+
+
+
+	<!-- =============== google map start ================ -->
+
+<!--   <head>
+    <meta charset="utf-8">
+    <title>Geochart GeoJSON example page</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/rarylson/geochart-geojson/master/build/geochart-geojson.min.js"></script>
+
+    <script type="text/javascript">
+      google.charts.load("current");
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+
+        // Create and populate a data table
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "City");
+        data.addColumn("number", "Value");
+        data.addRows([
+
+          ["Carlton", 1]
+        ]);
+
+        // Instantiate our Geochart GeoJSON object
+        var vis = new geochart_geojson.GeoChart(document.getElementById("mydiv"));
+
+        // Set Geochart GeoJSON options
+        var options = {
+          mapsOptions: {
+            // center: {lat: -22.15, lng: -42.9},
+            center: {lat: -37.814, lng: 144.96332},
+
+            zoom: 8
+            	       	region: 'Melbourne',
+     		// displayMode: 'markers',
+     		        resolution: 'suburb',
+        is3D: true,
+     		colorAxis: {colors: ['green', 'orange']}
+          },
+          geoJson: "https://cdn.rawgit.com/rarylson/geochart-geojson/master/example/rio-state.geojson",
+          geoJsonOptions: {
+            idPropertyName: "name"
+          }
+        };
+
+        // Draw our Geochart GeoJSON with the data we created locally
+        vis.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="mydiv" style="width: 900px; height: 560px;"></div>
+  </body> -->
+   
+	<!-- =============== google map end   ================ -->
+
+ <!-- ===== map === -->
+<body>
+	<div id="map"></div>
+      <script>
+  
+  	function initMap(){
+  		var locations = [
+        ['Bondi Beach', -33.890542, 151.274856, 4],
+        ['Coogee Beach', -33.923036, 151.259052, 5],
+        ['Cronulla Beach', -34.028249, 151.157507, 3],
+        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+        ['Maroubra Beach', -33.950198, 151.259302, 1]
+      ];
+  	
+  	 var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(-33.92, 151.25),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+  	
+  	 var infowindow = new google.maps.InfoWindow();
+  
+      var marker, i;
+  
+      for (i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map,
+  		icon: {
+  			path: google.maps.SymbolPath.CIRCLE,
+  			scale: 3
+  		}
+        });
+  
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+  	}
+  	}
+  	
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS13oSSH_Ly-kh1oOVE8tOuQO2UXgUQ04&callback=initMap">
+      </script> 
+</body>
+
+ <!-- ======================================= -->
+
+   <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      function dynamicChart(){
+        //var pythondata = {{ my_data }};
+        //var data = google.visualization.arrayToDataTable(pythondata);
+      };
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Area', 'Number of Tweets'],
+          ['South Australia & Tasmania', 72735],
+          ['New Southwales & Canberra', 88145],
+          ['Victoria', 156000],
+          ['Rest of Australia', 93275],
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Tweets per city',
+            subtitle: 'Number of Tweets collected at each city',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="columnchart_material" style="width: 1300px; height: 500px;"></div>
+  </body>
+
+<!-- ======================= -->
+
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawMultSeries);
+    function drawMultSeries() {
+      var data = google.visualization.arrayToDataTable([
+        ['with/without Coordinates', 'Tweets'],
+        ['with Coordinates', 410155],
+        ['without Coordinates', 489845]
+      ]);
+      var options = {
+        title: 'Tweets Collection with/without Coordinates',
+        chartArea: {width: '50%'},
+        hAxis: {
+          // title: 'Number of Tweets',
+          minValue: 0
+        },
+        vAxis: {
+          // title: ''
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+  </body>
+	<!-- ============================== -->
+ <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Sentiment', 'Tweets'],
+          ['Positive',     78090],
+          ['Negative',      40065],
+          ['neutral',  136000],
+
+        ]);
+
+        var options = {
+          title: 'Attitude toward Vegan'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+
+
+
+  <!-- ========================================= -->
+
+	<footer>
+    <div class="inner-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 f-about">
+            <a href="index.html"><h1><span>Acknowledgement</span></h1></a>
+            <p>Appreciate for the helpful questions and answers posted in Unimelb LMS discussion board.
+            </p>
+            <p> Thanks for Australian Urban Research Infrastructure Network (AURIN) providing data source.
+          </div>
+          <div class="col-md-4 l-posts">
+            <h3 class="widgetheading">Sitemap</h3>
+            <ul>
+              <li><a href="/cancer/">Related Health Data from Aurin</a></li>
+              <li><a href="/tweet/">See what we got from Twitter</a></li>
+              <li><a href="/visualization/">Interesting things we found</a></li>
+              <li><a href="/aboutus/">Know more about our team</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 f-contact">
+            <h3 class="widgetheading">Contact</h3>
+            <a href="#"><p><i class="fa fa-envelope"></i> team44@gmail.com</p></a>
+            <!-- <p><i class="fa fa-phone"></i>  +345 578 59 45 416</p> -->
+            <p><i class="fa fa-home"></i> University of Melbourne, 
+              Victoria AU</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <div class="last-div">
+      <div class="container">
+        <div class="row">
+          <div class="copyright">
+            © Cloud Computing Group 44
+          </div>  
+                    <!-- 
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=eNno
+                    -->       
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <ul class="social-network">
+            <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a></li>
+            <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a></li>
+            <!-- <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin fa-1x"></i></a></li> -->
+            <!-- <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest fa-1x"></i></a></li> -->
+            <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus fa-1x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>  
+        
+      
+    </div>  
+  </footer>
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.isotope.min.js"></script>
+  <script src="js/jquery.bxslider.min.js"></script>
+  <script type="text/javascript" src="js/fliplightbox.min.js"></script>
+  <script src="js/functions.js"></script> 
+  <script type="text/javascript">$('.portfolio').flipLightBox()</script>
+  </body>
+</html>
