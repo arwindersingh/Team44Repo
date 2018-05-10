@@ -24,5 +24,5 @@ For example, to create model for each part:
 
     python manage.py startapp tweet
 
-After initialize the models, we create template for each pages and embeded the googel charts and maps inside the HTML file. 
-And set corresponding route for each page.
+Generally speaking, after initialize the models, we create template for each page and embeded the googel charts and maps inside the HTML file. 
+And define functions and set corresponding route for each page.
