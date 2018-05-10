@@ -26,3 +26,7 @@ For example, to create model for each part:
 
 Generally speaking, after initialize the models, we create template for each page and embeded the googel charts and maps inside the HTML file. 
 And define functions and set corresponding route for each page.
+
+Youtube link to our application
+    
+    https://www.youtube.com/watch?v=8lnUO0-b47I&feature=youtu.be&hd=1
