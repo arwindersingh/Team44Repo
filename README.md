@@ -11,7 +11,7 @@ CollectOtherTweet.py got the starting code to manually run the other related cla
 specific functionalites.
 
 
-## Website Overview
+## Website 
 
 To briefly visualize the data and research we made, we use Django to design a simple website. 
 
@@ -24,3 +24,5 @@ For example, to create model for each part:
 
     python manage.py startapp tweet
 
+After initialize the models, we create template for each pages and embeded the googel charts and maps inside the HTML file. 
+And set corresponding route for each page.
